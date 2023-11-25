@@ -1,0 +1,32 @@
+##
+# Here will be a bunch of aliases for interactive build shell
+# This shell can be only spawned by ./envsetup --shell
+##
+
+source ~/.bashrc
+
+source ${P_ROOT}/build/toolset/load_modules.sh
+
+## Typical help menu
+alias help='itshell_help'
+
+## Build locally with the running system ( Dirty )
+alias bc='message "This option is Work In Progress"'
+
+## Build the package with docker system ( Clean )
+alias bcd='message "This option is Work In Progress"'
+
+# Pull existing user aliases.conf
+# If not found then make empty one from Public user
+
+who_am_i="${P_ROOT}/build/developer/users/$(whoami)"
+public="${P_ROOT}/build/developer/users/Public"
+
+if [ ! -f ${who_am_i}/aliases.conf ]; then
+    mkdir -p ${who_am_i}
+    cp -rf ${public}/* ${who_am_i}
+    message "User: $(whoami) configuration files copied over"
+fi
+
+# As the dev probably has some aliases overwritten in he's/her aliases then lets allow them to do it by sourcing aliases.conf here :)
+source ${who_am_i}/aliases.conf
