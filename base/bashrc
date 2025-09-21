@@ -47,6 +47,12 @@ fi
 # As the dev probably has some aliases overwritten in he's/her aliases then lets allow them to do it by sourcing aliases.conf here :)
 source ${who_am_i}/aliases.conf
 
+##
+# Toolset overrides
+##
+
+export TOOLSET_ITSHELL=true
+
 # Now lets clear the shell again
 clear
 
